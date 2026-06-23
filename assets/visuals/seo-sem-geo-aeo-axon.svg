@@ -1,0 +1,18 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="720" height="520" viewBox="0 0 720 520" role="img">
+  <title>SEO SEM GEO AEO</title>
+  <rect width="720" height="520" rx="28" fill="#f8fbff"/>
+  <rect x="44" y="44" width="632" height="432" rx="24" fill="#ffffff" stroke="#dbe7ff"/>
+  <rect x="78" y="78" width="564" height="54" rx="14" fill="#003087"/>
+  <circle cx="108" cy="105" r="8" fill="#ffffff" opacity=".9"/><circle cx="134" cy="105" r="8" fill="#ffffff" opacity=".65"/><circle cx="160" cy="105" r="8" fill="#ffffff" opacity=".45"/>
+  <text x="194" y="111" fill="#ffffff" font-family="Arial, sans-serif" font-size="18" font-weight="700">SEO SEM GEO AEO</text>
+  <rect x="74" y="166" width="218" height="48" rx="12" fill="#ffffff" stroke="#c8dcff"/><text x="96" y="197" fill="#1e293b" font-family="Arial, sans-serif" font-size="16" font-weight="700">SEO</text>
+  <rect x="74" y="232" width="218" height="48" rx="12" fill="#ffffff" stroke="#c8dcff"/><text x="96" y="263" fill="#1e293b" font-family="Arial, sans-serif" font-size="16" font-weight="700">SEM</text>
+  <rect x="74" y="298" width="218" height="48" rx="12" fill="#ffffff" stroke="#c8dcff"/><text x="96" y="329" fill="#1e293b" font-family="Arial, sans-serif" font-size="16" font-weight="700">GEO</text>
+  <rect x="74" y="364" width="218" height="48" rx="12" fill="#ffffff" stroke="#c8dcff"/><text x="96" y="395" fill="#1e293b" font-family="Arial, sans-serif" font-size="16" font-weight="700">AEO</text>
+  <rect x="348" y="166" width="250" height="180" rx="22" fill="#eef6ff" stroke="#bfd3ff"/>
+  <path d="M382 224h164M382 266h198M382 308h140" stroke="#003087" stroke-width="12" stroke-linecap="round" opacity=".28"/>
+  <circle cx="548" cy="222" r="38" fill="#003087"/><path d="M532 222l12 12 24-28" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M292 190c44 0 36 74 56 74" fill="none" stroke="#ef4444" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 9"/>
+  <path d="M292 386c58 0 34-86 56-86" fill="none" stroke="#0d9488" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 9"/>
+  <rect x="396" y="376" width="142" height="40" rx="20" fill="#003087"/><text x="426" y="401" fill="#fff" font-family="Arial, sans-serif" font-size="14" font-weight="700">Axon review</text>
+</svg>

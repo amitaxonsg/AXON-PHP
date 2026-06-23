@@ -1,0 +1,13 @@
+Dev Site:
+dev.axon.com.sg
+
+Git Repo:
+amitaxonsg/axonnewsite2026
+
+Deploy:
+
+rsync -av --delete axon-redesign/ /home/devaxoncom/public_html/
+
+No npm build.
+No NextJS build.
+Static files only.

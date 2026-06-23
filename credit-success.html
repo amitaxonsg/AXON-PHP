@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payment Received | Axon 1ProIT</title>
+<meta name="description" content="Your Axon support credit payment has been received"/>
+<link rel="icon" type="image/png" href="logo.png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,slnt,wdth,wght,ROND@8..144,-10..0,25..150,300..900,0..100&amp;display=swap" rel="stylesheet"/>
+<link href="style.css?v=18" rel="stylesheet"/>
+<style>
+  .axon-payment-status-card { margin-top: 24px; background: #fff; border: 1px solid #e5e9f2; border-radius: 22px; padding: 24px; box-shadow: 0 18px 45px rgba(12, 32, 70, 0.08); }
+  .axon-payment-status-card h2 { margin: 0 0 10px; color: #003087; }
+  .axon-payment-status-card p { color: #526071; line-height: 1.65; }
+  .axon-payment-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+  .axon-payment-summary div { border: 1px solid #e5e9f2; border-radius: 14px; padding: 14px; background: #f8fafc; }
+  .axon-payment-summary span { display: block; font-size: .82rem; color: #6b7280; margin-bottom: 4px; }
+  .axon-payment-summary strong { color: #13223a; }
+  .receipt-success { color: #087443 !important; }
+  .receipt-error { color: #b42318 !important; }
+  @media (max-width: 700px) { .axon-payment-summary { grid-template-columns: 1fr; } }
+</style>
+<link rel="canonical" href="https://philippines.axon.com.sg/credit-success.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Axon 1ProIT"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:title" content="Thank you. Your Axon credit payment was successful. | Axon 1ProIT"/>
+<meta property="og:description" content="Your Axon support credit payment has been received"/>
+<meta property="og:url" content="https://philippines.axon.com.sg/credit-success.html"/>
+<meta property="og:image" content="https://philippines.axon.com.sg/dashboard_preview.png"/>
+<meta property="og:image:secure_url" content="https://philippines.axon.com.sg/dashboard_preview.png"/>
+<meta property="og:image:type" content="image/png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Thank you. Your Axon credit payment was successful. | Axon 1ProIT"/>
+<meta name="twitter:description" content="Your Axon support credit payment has been received"/>
+<meta name="twitter:url" content="https://philippines.axon.com.sg/credit-success.html"/>
+<meta name="twitter:image" content="https://philippines.axon.com.sg/dashboard_preview.png"/>
+</head>
+<body>
+<header class="navbar" id="home">
+  <div class="nav-container">
+    <a class="logo" href="index.html"><img alt="Axon 1ProIT Logo" class="logo-image" src="logo.png"/></a>
+    <nav class="nav-menu" id="navMenu">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="credit-top-up.html">Buy Credits</a>
+      <a class="nav-link" href="contact.html">Contact Us</a><a class="nav-link" href="ask-axon.html">Ask Axon</a><a class="nav-link" href="trending/">News</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-nav-pill hide-mobile" href="https://1proit.com/index.php/login" target="_blank" rel="noopener">Login to Axon 1Pro - Renewals</a>
+      <button aria-label="Toggle Navigation Menu" class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<section class="axon-ai-simple-page axon-credit-page">
+  <div class="axon-ai-container">
+    <div class="axon-ai-hero axon-credit-hero">
+      <div>
+        <span class="axon-ai-kicker">Payment Received</span>
+        <h1>Thank you. Your Axon credit payment was successful.</h1>
+        <p>We are verifying the Stripe payment and preparing your branded PDF receipt / invoice.</p>
+      </div>
+      <a class="axon-ai-hero-btn" href="contact.html">Contact Axon</a>
+    </div>
+
+    <div class="axon-payment-status-card">
+      <h2>Receipt and invoice email</h2>
+      <p id="receiptStatus">Preparing your email receipt and branded PDF invoice...</p>
+      <div class="axon-payment-summary" id="paymentSummary" style="display:none;"></div>
+    </div>
+
+    <div class="axon-ai-setup axon-credit-setup">
+      <div>
+        <span>Next step</span>
+        <h2>Axon will review your credit purchase and support request.</h2>
+        <p>For urgent support, WhatsApp Amit at +63 961 404 4560 or email support@axon.com.sg.</p>
+      </div>
+      <a href="index.html">Back to Axon</a>
+    </div>
+    <footer class="axon-simple-footer">
+      <div class="axon-footer-top">
+        <h2>Axon 1ProIT</h2>
+        <div><a href="contact.html">Contact</a><a href="credit-top-up.html">Buy Credits</a></div>
+      </div>
+      <div class="axon-footer-word">AXON</div>
+      <div class="axon-footer-bottom"><span>&copy; 2026 Axon 1ProIT - Singapore, Philippines</span><span>Setup, configuration and ongoing technology support.</span></div>
+    </footer>
+  </div>
+</section>
+<script src="app.js?v=8"></script>
+<script>
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get('session_id') || '';
+  const statusEl = document.getElementById('receiptStatus');
+  const summaryEl = document.getElementById('paymentSummary');
+
+  function setStatus(message, type) {
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.className = type === 'success' ? 'receipt-success' : (type === 'error' ? 'receipt-error' : '');
+  }
+
+  function renderSummary(summary) {
+    if (!summaryEl || !summary) return;
+    summaryEl.style.display = 'grid';
+    summaryEl.innerHTML = '';
+    [
+      ['Invoice No.', summary.invoice_no],
+      ['Amount Paid', summary.amount],
+      ['Credit Hours', summary.hours],
+      ['Valid Until', summary.valid_until]
+    ].forEach(function (item) {
+      const box = document.createElement('div');
+      const label = document.createElement('span');
+      const value = document.createElement('strong');
+      label.textContent = item[0];
+      value.textContent = item[1] || '-';
+      box.append(label, value);
+      summaryEl.appendChild(box);
+    });
+  }
+
+  async function sendReceipt() {
+    if (!sessionId) {
+      setStatus('Payment completed, but Stripe did not return a session ID. Please contact Axon if you need a receipt copy.', 'error');
+      return;
+    }
+
+    try {
+      const response = await fetch('payment-receipt.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: sessionId })
+      });
+      const data = await response.json().catch(function () { return {}; });
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || 'Unable to send payment receipt email right now.');
+      }
+      renderSummary(data.summary);
+      setStatus(data.already_sent ? 'Your receipt email was already sent earlier.' : 'Receipt email sent successfully. The branded PDF invoice is attached in the email.', 'success');
+    } catch (error) {
+      setStatus(error.message || 'Payment received, but the receipt email could not be sent automatically. Please contact Axon for a manual receipt.', 'error');
+    }
+  }
+
+  sendReceipt();
+})();
+</script>
+</body>
+</html>

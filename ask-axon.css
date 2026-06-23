@@ -1,0 +1,252 @@
+/* Ask Axon page refinements - uses existing Axon branding and Google Sans Flex */
+.ask-axon-page .axon-standard-hero {
+  gap: 42px;
+  padding-bottom: 0;
+}
+
+.ask-axon-page .axon-standard-section {
+  margin-top: 48px;
+}
+
+.ask-axon-page .axon-standard-section-head {
+  margin-bottom: 18px;
+}
+
+.ask-axon-panel {
+  background: #ffffff;
+  border: 1px solid rgba(0, 48, 135, 0.12);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 18px 45px rgba(0, 48, 135, 0.08);
+}
+
+.ask-axon-form {
+  display: grid;
+  gap: 13px;
+}
+
+.ask-axon-form label {
+  display: grid;
+  gap: 8px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.ask-axon-form input,
+.ask-axon-form textarea {
+  width: 100%;
+  border: 1px solid rgba(0, 48, 135, 0.18);
+  border-radius: 16px;
+  padding: 13px 16px;
+  font: inherit;
+  color: #17202a;
+  background: #f8fbff;
+  outline: none;
+}
+
+.ask-axon-form textarea {
+  min-height: 104px;
+  resize: vertical;
+}
+
+.ask-axon-form input:focus,
+.ask-axon-form textarea:focus {
+  border-color: #003087;
+  box-shadow: 0 0 0 4px rgba(0, 48, 135, 0.08);
+  background: #ffffff;
+}
+
+.ask-axon-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.ask-axon-actions button,
+.ask-axon-form button {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  background: #003087;
+  color: #ffffff;
+}
+
+.ask-axon-actions button.secondary {
+  background: #eef4ff;
+  color: #003087;
+}
+
+.ask-axon-note {
+  margin: 0;
+  color: #5f6f89;
+  font-size: 0.95rem;
+}
+
+.ask-axon-result {
+  margin-top: 14px;
+  min-height: 104px;
+  white-space: pre-wrap;
+  background: linear-gradient(180deg, #f8fbff, #ffffff);
+  border: 1px solid rgba(0, 48, 135, 0.12);
+  border-radius: 20px;
+  padding: 18px;
+  color: #17202a;
+  line-height: 1.62;
+}
+
+.ask-axon-submit {
+  display: none;
+  margin-top: 16px;
+  border-top: 1px solid rgba(0, 48, 135, 0.1);
+  padding-top: 16px;
+}
+
+.ask-axon-submit.open {
+  display: block;
+}
+
+.ask-axon-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ask-axon-status {
+  min-height: 22px;
+  color: #5f6f89;
+  font-weight: 700;
+}
+
+.ask-axon-status.success {
+  color: #127a3a;
+}
+
+.ask-axon-status.error {
+  color: #b42318;
+}
+
+.ask-axon-visual {
+  position: relative;
+  min-height: 360px;
+  padding: 28px;
+  overflow: hidden;
+}
+
+.ask-axon-visual-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 48, 135, 0.12);
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow: 0 16px 34px rgba(0, 48, 135, 0.10);
+}
+
+.ask-axon-visual-card + .ask-axon-visual-card {
+  margin-top: 16px;
+}
+
+.ask-axon-visual-card span {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: #eef4ff;
+  color: #003087;
+  font-weight: 800;
+  font-size: 0.78rem;
+}
+
+.ask-axon-visual-card h3 {
+  margin: 12px 0 8px;
+  font-size: 1.15rem;
+}
+
+.ask-axon-visual-card p {
+  margin: 0;
+  color: #5f6f89;
+  line-height: 1.55;
+}
+
+@media (max-width: 720px) {
+  .ask-axon-page .axon-standard-hero {
+    gap: 24px;
+    padding-bottom: 0;
+  }
+  .ask-axon-page .axon-standard-section {
+    margin-top: 40px;
+  }
+  .ask-axon-panel {
+    padding: 20px;
+    border-radius: 20px;
+  }
+  .ask-axon-grid {
+    grid-template-columns: 1fr;
+  }
+  .ask-axon-actions button,
+  .ask-axon-form button {
+    width: 100%;
+  }
+}
+
+
+/* Ask Axon v31: common question dropdown and link-friendly answers */
+.ask-axon-select-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.ask-axon-select-row select {
+  width: 100%;
+  border: 1px solid rgba(0, 48, 135, 0.18);
+  border-radius: 999px;
+  padding: 14px 18px;
+  font: inherit;
+  font-weight: 700;
+  color: #17202a;
+  background: #f8fbff;
+  outline: none;
+}
+
+.ask-axon-select-row select:focus {
+  border-color: #003087;
+  box-shadow: 0 0 0 4px rgba(0, 48, 135, 0.08);
+  background: #ffffff;
+}
+
+.ask-axon-result a {
+  color: #003087;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .ask-axon-select-row {
+    grid-template-columns: 1fr;
+  }
+  .ask-axon-select-row button {
+    width: 100%;
+  }
+}
+
+/* v32 website advisory readability + long URL wrapping */
+.ask-axon-result {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.ask-axon-result a {
+  color: #003087;
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+.ask-axon-form select {
+  max-width: 100%;
+}

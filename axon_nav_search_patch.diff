@@ -1,0 +1,192 @@
+--- app.js
++++ app.js
+@@ -134,31 +134,37 @@
+     if (!navMenu) return;
+     const currentPath = window.location.pathname.replace(/\/+$/, '').toLowerCase();
+ 
+-    // Check if Trending link already exists
+-    const existingNews = navMenu.querySelector('a[href*="/trending"], a[href*="trending/"]');
+-    if (existingNews) {
++    let newsLink = navMenu.querySelector('a[href*="/trending"], a[href*="trending/"]');
++
++    if (newsLink) {
++      newsLink.textContent = 'News';
+       if (currentPath.startsWith('/trending')) {
+-        existingNews.classList.add('active');
++        newsLink.classList.add('active');
+       }
+       return;
+     }
+ 
+-    // Find the Contact Us link - it might be the last .nav-link
++    const askAxonLink = navMenu.querySelector('a.nav-link[href*="ask-axon"]');
+     let contactLink = navMenu.querySelector('.nav-link[href*="contact"]');
++
+     if (!contactLink) {
+-      // Fallback: find all nav-links and use the last simple link (not a dropdown)
+       const allNavLinks = Array.from(navMenu.querySelectorAll('.nav-link:not(.dropdown-toggle)'));
+       contactLink = allNavLinks[allNavLinks.length - 1];
+     }
+-    
+-    if (!contactLink) return;
+-
+-    const newsLink = document.createElement('a');
++
++    newsLink = document.createElement('a');
+     newsLink.className = 'nav-link';
+     newsLink.href = '/trending/';
+     newsLink.textContent = 'News';
+-
+-    contactLink.insertAdjacentElement('afterend', newsLink);
++    newsLink.addEventListener('click', closeMobileMenu);
++
++    if (askAxonLink) {
++      askAxonLink.insertAdjacentElement('afterend', newsLink);
++    } else if (contactLink) {
++      contactLink.insertAdjacentElement('afterend', newsLink);
++    } else {
++      navMenu.appendChild(newsLink);
++    }
+ 
+     if (currentPath.startsWith('/trending')) {
+       newsLink.classList.add('active');
+@@ -167,8 +173,15 @@
+ 
+   function setupMobileNavActions() {
+     if (!navMenu) return;
++
+     const creditLink = navMenu.querySelector('.mobile-credit-link');
+     const existingMobileLogin = navMenu.querySelector('.mobile-renewals-link');
++
++    if (creditLink) {
++      creditLink.textContent = 'Buy Credits';
++      creditLink.addEventListener('click', closeMobileMenu);
++    }
++
+     if (creditLink && !existingMobileLogin) {
+       const mobileLoginLink = document.createElement('a');
+       mobileLoginLink.className = 'nav-link mobile-renewals-link';
+@@ -179,6 +192,72 @@
+       mobileLoginLink.addEventListener('click', closeMobileMenu);
+       creditLink.insertAdjacentElement('afterend', mobileLoginLink);
+     }
++  }
++
++  function normalizeNavigationOrder() {
++    if (!navMenu) return;
++
++    const findDirectDropdown = (label) => {
++      const normalizedLabel = label.toLowerCase();
++      return Array.from(navMenu.querySelectorAll(':scope > .nav-item-dropdown'))
++        .find((item) => (item.textContent || '').toLowerCase().includes(normalizedLabel));
++    };
++
++    const findDirectLink = (patterns) => {
++      const links = Array.from(navMenu.querySelectorAll(':scope > a.nav-link'));
++      return links.find((link) => {
++        const href = (link.getAttribute('href') || '').toLowerCase();
++        const text = (link.textContent || '').trim().toLowerCase();
++        return patterns.some((pattern) => href.includes(pattern) || text === pattern);
++      });
++    };
++
++    const homeLink = findDirectLink(['index.html', 'home']);
++    const servicesDropdown = findDirectDropdown('services');
++    const useCasesLink = findDirectLink(['use-cases.html', 'use cases']);
++    const aboutDropdown = findDirectDropdown('about axon');
++    const contactLink = findDirectLink(['contact.html', 'contact us']);
++
++    let askAxonLink = findDirectLink(['ask-axon.html', 'ask axon']);
++    if (!askAxonLink) {
++      askAxonLink = document.createElement('a');
++      askAxonLink.className = 'nav-link';
++      askAxonLink.href = 'ask-axon.html';
++      askAxonLink.textContent = 'Ask Axon';
++      askAxonLink.addEventListener('click', closeMobileMenu);
++    }
++
++    let newsLink = findDirectLink(['trending', 'news']);
++    if (!newsLink) {
++      newsLink = document.createElement('a');
++      newsLink.className = 'nav-link';
++      newsLink.href = '/trending/';
++      newsLink.addEventListener('click', closeMobileMenu);
++    }
++    newsLink.textContent = 'News';
++
++    const mobileCreditLink = navMenu.querySelector(':scope > a.mobile-credit-link, :scope > a.nav-link[href*="credit-top-up"]');
++    if (mobileCreditLink) {
++      mobileCreditLink.classList.add('mobile-credit-link');
++      mobileCreditLink.textContent = 'Buy Credits';
++      mobileCreditLink.addEventListener('click', closeMobileMenu);
++    }
++
++    const mobileRenewalsLink = navMenu.querySelector(':scope > a.mobile-renewals-link');
++
++    [
++      homeLink,
++      servicesDropdown,
++      useCasesLink,
++      aboutDropdown,
++      contactLink,
++      askAxonLink,
++      newsLink,
++      mobileCreditLink,
++      mobileRenewalsLink
++    ].filter(Boolean).forEach((item) => {
++      navMenu.appendChild(item);
++    });
+   }
+ 
+   async function setupTrendingPage() {
+@@ -432,6 +511,15 @@
+   // Site search for services and common business problems.
+   const navActions = document.querySelector('.nav-actions');
+   const siteSearchPages = [
++    { title: 'Ask Axon', category: 'Technology & AI Advisory', url: 'ask-axon.html', terms: 'ask axon technology ai advisor business help website advisory review plain english website issue email issue hosting issue automation issue ai question' },
++    { title: 'AI Search Visibility', category: 'AI Search Services', url: 'ai-search-visibility.html', terms: 'ai search visibility chatgpt gemini copilot perplexity google ai overview business discoverability ai recommendations' },
++    { title: 'AI-Ready Website', category: 'AI Search Services', url: 'ai-ready-website.html', terms: 'ai ready website ai readable website structured service pages schema faq answer content ai search visibility' },
++    { title: 'LLM-Friendly Content Architecture', category: 'AI Search Services', url: 'llm-friendly-content-architecture.html', terms: 'llm friendly content architecture structured content faq service hierarchy ai readable pages chatgpt gemini copilot' },
++    { title: 'Generative Engine Optimization (GEO)', category: 'AI Search Services', url: 'generative-engine-optimization.html', terms: 'geo generative engine optimization ai recommendations ai search chatgpt gemini copilot perplexity business discovery' },
++    { title: 'Answer Engine Optimization (AEO)', category: 'AI Search Services', url: 'answer-engine-optimization.html', terms: 'aeo answer engine optimization faq direct answers question answer snippets voice search ai answers' },
++    { title: 'SEO, SEM, GEO & AEO', category: 'AI Search Services', url: 'seo-sem-geo-aeo.html', terms: 'seo sem geo aeo search engine optimization search engine marketing generative engine optimization answer engine optimization ai search' },
++    { title: 'Why Axon', category: 'About Axon', url: 'why-axon.html', terms: 'why axon about axon technology advisor ai advisor business first human first company profile experience' },
++    { title: 'Buy Credits', category: 'Billing & Credits', url: 'credit-top-up.html', terms: 'buy credits ai credits top up payment checkout stripe credit balance axon credits' },
+     { title: 'Google Business Profile', category: 'Business Growth', url: 'google-business-profile.html', terms: 'google business profile maps local listing reviews local visibility business profile' },
+     { title: 'SEO & Local Visibility', category: 'Business Growth', url: 'seo-local-visibility.html', terms: 'seo local visibility local seo google search service pages location pages indexing' },
+     { title: 'Analytics & Search Console', category: 'Business Growth', url: 'analytics-search-console.html', terms: 'google analytics ga4 search console reporting indexing enquiry tracking website data' },
+@@ -444,7 +532,8 @@
+     { title: 'Review Collection', category: 'Business Operations', url: 'review-collection.html', terms: 'reviews testimonials google review collection feedback trust local seo' },
+     { title: 'Support Ticketing', category: 'Business Operations', url: 'support-ticketing.html', terms: 'support ticket helpdesk issue tracking customer support workflow' },
+     { title: 'Staff AI & Privacy Policy', category: 'Business Operations', url: 'staff-ai-privacy-policy.html', terms: 'staff ai policy privacy safe ai use governance training confidential data' },
+-    { title: 'Core Web Vitals Checks', category: 'Security, Recovery & Performance', url: 'core-web-vitals-checks.html', terms: 'core web vitals page speed mobile performance lcp cls inp website speed' },    { title: 'WordPress Plugin Development', category: 'Websites & Digital Presence', url: 'wordpress-plugin-development.html', terms: 'wordpress plugin custom plugin business workflow calculator booking form portal automation wordpress feature marketplace plugin' },
++    { title: 'Core Web Vitals Checks', category: 'Security, Recovery & Performance', url: 'core-web-vitals-checks.html', terms: 'core web vitals page speed mobile performance lcp cls inp website speed' },
++    { title: 'WordPress Plugin Development', category: 'Websites & Digital Presence', url: 'wordpress-plugin-development.html', terms: 'wordpress plugin custom plugin business workflow calculator booking form portal automation wordpress feature marketplace plugin' },
+     { title: 'Website Optimization Audit', category: 'Websites & Digital Presence', url: 'website-optimization-audit.html', terms: 'google analytics google anlyatics search console seo sem sitemap tag manager tracking conversion events indexing not found on google crawl metadata' },
+     { title: 'SEO & Local Business Visibility', category: 'Business Growth', url: 'seo-local-visibility.html', terms: 'seo local seo google business profile search console ga4 analytics sitemap service pages location pages reviews testimonials core web vitals website speed indexing not found on google local business visibility singapore philippines enquiry tracking whatsapp clicks phone clicks' },
+     { title: 'Wix Website Support', category: 'Websites & Digital Presence', url: 'wix-website-support.html', terms: 'wix form not sending wix domain wix seo wix mobile layout wix analytics wix redesign wix support' },
+@@ -677,6 +766,7 @@
+   setupSiteSearch();
+   setupMobileNavActions();
+   setupNewsNav();
++  normalizeNavigationOrder();
+   setupTrendingPage();
+ 
+   if (contactModalClose) {
+
+--- style.css
++++ style.css
+@@ -2350,8 +2350,12 @@
+     order: 80;
+   }
+ 
++  .nav-menu > .nav-link[href*="ask-axon"] {
++    order: 81;
++  }
++
+   .nav-menu > .nav-link[href*="trending"] {
+-    order: 81;
++    order: 82;
+   }
+   
+   .hide-mobile {

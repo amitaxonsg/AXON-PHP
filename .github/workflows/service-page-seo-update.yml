@@ -1,0 +1,50 @@
+name: Service Page SEO Update
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tools/update_service_pages.py'
+      - 'tools/final_nav_social_update.py'
+      - '.github/workflows/service-page-seo-update.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: service-page-seo-update-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  update-service-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Verify Python
+        run: python --version
+
+      - name: Sync branch before generated updates
+        run: git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+
+      - name: Update service pages, SEO, AI search and social sharing
+        run: |
+          python tools/update_service_pages.py
+          python tools/final_nav_social_update.py
+
+      - name: Commit generated service page updates
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add *.html trending/index.html sitemap.xml llms.txt assets/visuals/*.svg || true
+            git commit -m "Update service pages SEO GEO AEO and social sharing"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+            git push origin HEAD:"${GITHUB_REF_NAME}"
+          else
+            echo "No service page changes needed."
+          fi

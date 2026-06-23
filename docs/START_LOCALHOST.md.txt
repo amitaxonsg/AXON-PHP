@@ -1,0 +1,14 @@
+Local Site Startup
+
+Folder:
+C:\Users\gundus\Downloads\axon-new-version\axon-redesign
+
+Local URL:
+http://localhost:8000
+
+Server:
+PowerShell Localhost Script
+
+DO NOT install Python.
+DO NOT use npm.
+DO NOT use NextJS.

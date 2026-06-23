@@ -1,0 +1,76 @@
+# ==========================================================
+# AXON PHILIPPINES SITE - SEO SAFE LAUNCH RULES
+# Domain: philippines.axon.com.sg
+# ==========================================================
+
+Options -Indexes
+RewriteEngine On
+
+# ----------------------------------------------------------
+# Security / spam protection for contact form
+# ----------------------------------------------------------
+
+# Block direct bot POSTs to contact form without proper Axon Philippines referrer
+RewriteCond %{REQUEST_METHOD} POST
+RewriteCond %{REQUEST_URI} ^/contact-submit\.php$ [NC]
+RewriteCond %{HTTP_REFERER} !^https?://philippines\.axon\.com\.sg/ [NC]
+RewriteRule ^ - [F,L]
+
+# Block empty or common bot user agents on contact submit
+RewriteCond %{REQUEST_URI} ^/contact-submit\.php$ [NC]
+RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+RewriteCond %{HTTP_USER_AGENT} (curl|wget|python|scrapy|httpclient|libwww|bot|spider|crawler) [NC]
+RewriteRule ^ - [F,L]
+
+# ----------------------------------------------------------
+# Force HTTPS
+# ----------------------------------------------------------
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# ----------------------------------------------------------
+# Force Philippines host
+# ----------------------------------------------------------
+RewriteCond %{HTTP_HOST} !^philippines\.axon\.com\.sg$ [NC]
+RewriteRule ^ https://philippines.axon.com.sg%{REQUEST_URI} [R=301,L]
+
+# ----------------------------------------------------------
+# Old indexed URL redirects
+# ----------------------------------------------------------
+Redirect 301 /about-us.html /about-axon.html
+Redirect 301 /about.html /about-axon.html
+Redirect 301 /contact-us.html /contact.html
+
+Redirect 301 /services.html /index.html#services
+
+Redirect 301 /web-design.html /corporate-websites.html
+Redirect 301 /website-design.html /corporate-websites.html
+Redirect 301 /web-development.html /business-applications.html
+Redirect 301 /website-maintenance.html /website-maintenance-support.html
+
+Redirect 301 /ecommerce.html /e-commerce-solutions.html
+Redirect 301 /e-commerce.html /e-commerce-solutions.html
+
+Redirect 301 /hosting.html /corporate-hosting.html
+Redirect 301 /domain.html /domain-registration-management.html
+Redirect 301 /email-hosting.html /business-email-hosting.html
+
+Redirect 301 /google-workspace.html /google-workspace-solutions.html
+Redirect 301 /microsoft-365.html /microsoft-365-solutions.html
+Redirect 301 /office-365.html /microsoft-365-solutions.html
+
+Redirect 301 /seo.html /seo-local-visibility.html
+Redirect 301 /malware.html /malware-removal.html
+Redirect 301 /backup.html /backup-disaster-recovery.html
+
+Redirect 301 /ai.html /ai-consulting-implementation.html
+Redirect 301 /automation.html /business-process-automation.html
+Redirect 301 /chatbot.html /website-ai-chatbot.html
+
+Redirect 301 /blog.html /trending/
+Redirect 301 /news.html /trending/
+
+# ----------------------------------------------------------
+# Custom 404 fallback
+# ----------------------------------------------------------
+ErrorDocument 404 /404.html

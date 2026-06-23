@@ -1,0 +1,10 @@
+Homepage animation issue
+
+DO NOT use:
+navActions.parentNode.insertBefore(searchToggle, menuButton);
+
+USE:
+navActions.insertBefore(searchToggle, menuButton);
+
+Reason:
+Breaks homepage animation and Trending.

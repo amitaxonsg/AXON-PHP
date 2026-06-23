@@ -1,0 +1,18 @@
+Project: Axon Website 2026
+Stack: HTML, CSS, JS
+No React
+No NextJS
+No Build Process
+Static Website
+
+Local Development:
+http://localhost:8000
+
+Production:
+https://dev.axon.com.sg
+
+Deployment:
+cd /home/devaxoncom/github/axonnewsite2026
+git pull origin main
+rsync -av --delete axon-redesign/ /home/devaxoncom/public_html/
+chown -R devaxoncom:devaxoncom /home/devaxoncom/public_html
