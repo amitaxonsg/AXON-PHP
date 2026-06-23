@@ -77,3 +77,129 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, true);
 });
+
+// Contact page: smarter plain-English AI helper for business owners.
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('axonAgentForm');
+  const input = document.getElementById('axonAgentInput');
+  const messages = document.getElementById('axonAgentMessages');
+  const contactMessage = document.getElementById('c_message');
+  if (!form || !input || !messages) return;
+
+  const whatsappUrl = 'https://wa.me/639614044560';
+  const contactUrl = 'contact.html';
+
+  function normalize(value) {
+    return String(value || '').toLowerCase().replace(/[^a-z0-9+]+/g, ' ').trim();
+  }
+
+  function includesAny(text, words) {
+    return words.some((word) => text.includes(word));
+  }
+
+  function addMessage(role, text, actions = []) {
+    const message = document.createElement('div');
+    message.className = `axon-agent-message ${role}`;
+
+    const speaker = document.createElement('strong');
+    speaker.textContent = role === 'user' ? 'You' : 'Axon AI Advisor';
+
+    const body = document.createElement('p');
+    body.textContent = text;
+
+    message.append(speaker, body);
+
+    if (actions.length) {
+      const actionWrap = document.createElement('div');
+      actionWrap.className = 'axon-agent-actions';
+      actions.forEach((action) => {
+        const link = document.createElement('a');
+        link.href = action.href;
+        link.textContent = action.label;
+        link.target = action.external ? '_blank' : '_self';
+        link.rel = action.external ? 'noopener' : '';
+        link.className = 'axon-agent-action-link';
+        actionWrap.appendChild(link);
+      });
+      message.appendChild(actionWrap);
+    }
+
+    messages.appendChild(message);
+    messages.scrollTop = messages.scrollHeight;
+    return message;
+  }
+
+  function prefillForm(question, topic) {
+    if (!contactMessage) return;
+    const existing = contactMessage.value.trim();
+    if (existing) return;
+    contactMessage.value = `I need help with ${topic}.\n\nMy issue / requirement:\n${question}\n\nPlease advise the safest next step.`;
+  }
+
+  function buildAnswer(question) {
+    const text = normalize(question);
+
+    if (includesAny(text, ['payment gateway', 'payment', 'stripe', 'paynow', 'paypal', 'checkout', 'credit card', 'online payment', 'pay online'])) {
+      prefillForm(question, 'payment gateway integration');
+      return `1. What this likely means\nYou want customers to pay online from your website, form, booking page, invoice, shop or portal. In simple terms, your website must safely collect an order or request, send the customer to a trusted payment provider, then confirm the payment result.\n\n2. What could be involved\nThe right setup depends on your platform. A normal business website may need Stripe, PayPal, PayNow instructions, invoice payment links, WooCommerce, Shopify checkout, a booking payment flow, or a custom payment page. A proper setup also needs SSL, correct currency, email confirmations, admin notifications, success/failure pages, spam protection, privacy wording and testing before going live.\n\n3. What you can check first\nCheck what you want people to pay for: product, deposit, service fee, booking, subscription or invoice. Also check which payment method you want, whether you already have a merchant account, and whether the payment should connect to an invoice, booking, form or online store.\n\n4. DIY or Axon help\nDIY is okay for very simple payment links. Ask Axon to assist if the payment must be connected to your website, forms, customer emails, invoices, booking flow, WooCommerce, Shopify or custom app. Payment setup should be tested carefully because wrong settings can affect customer trust and money collection.\n\n5. Best next step\nSend Axon your website URL, payment provider preference and what customers are paying for. Axon can recommend the simplest safe setup and implement it.`;
+    }
+
+    if (includesAny(text, ['google to 365', 'google workspace to microsoft', 'gmail to outlook', 'gmail to 365', 'move to 365', 'migrate to 365'])) {
+      prefillForm(question, 'Google Workspace to Microsoft 365 email migration');
+      return `1. What this likely means\nYou want to move company email from Gmail or Google Workspace into Microsoft 365 / Outlook. This is usually done when a business wants Outlook, Exchange Online, Teams, OneDrive or Microsoft licensing under one platform.\n\n2. What could be involved\nThe migration may include users, mailboxes, old emails, DNS records, MX records, SPF, DKIM, DMARC, Outlook setup, mobile email setup, shared mailboxes and cutover timing. The important part is avoiding email downtime and making sure old messages are not lost.\n\n3. What you can check first\nPrepare the domain name, number of users, current Google admin access, Microsoft tenant access if already created, and whether you need old email history migrated. Also note whether users are on laptops, Outlook, phones or webmail.\n\n4. DIY or Axon help\nDIY is risky if the company depends on email daily. Axon can plan the cutover, check DNS, migrate mailboxes and support users after the move.\n\n5. Best next step\nSend Axon the domain name and approximate number of mailboxes. Axon can advise the safest migration path.`;
+    }
+
+    if (includesAny(text, ['365 to google', 'microsoft 365 to google', 'outlook to gmail', 'office 365 to gmail', 'move to google workspace', 'migrate to google'])) {
+      prefillForm(question, 'Microsoft 365 to Google Workspace email migration');
+      return `1. What this likely means\nYou want to move company email from Microsoft 365 / Outlook into Google Workspace / Gmail. This is common when a business prefers Gmail, Google Drive, Google Calendar and simpler browser-based collaboration.\n\n2. What could be involved\nThe migration may include mailboxes, old emails, calendars, contacts, aliases, groups, DNS records, MX, SPF, DKIM, DMARC, Gmail setup, phone setup and user support after cutover.\n\n3. What you can check first\nConfirm how many users are moving, whether you need historical emails, and whether users currently use Outlook desktop, webmail or mobile phones. Also check who controls the domain DNS.\n\n4. DIY or Axon help\nDIY may be okay for one mailbox, but company migration should be planned. Axon can help reduce downtime, protect mail history and make sure mail flow is correct.\n\n5. Best next step\nSend Axon your domain, number of mailboxes and current email provider access details.`;
+    }
+
+    if (includesAny(text, ['seo', 'sem', 'aeo', 'geo', 'not found on google', 'not showing on google', 'google ranking', 'ai search', 'chatgpt find', 'google ads', 'search console', 'analytics', 'ga4', 'tag manager'])) {
+      prefillForm(question, 'SEO, SEM, GEO and AEO visibility review');
+      return `1. What this likely means\nYou want more people to find your business through Google, ads, AI search tools or answer engines. This is not only about keywords. Your website must clearly explain your services, locations, proof, FAQs and next steps.\n\n2. What could be involved\nSEO covers organic Google visibility. SEM covers paid search campaigns. GEO helps AI tools understand and recommend your business. AEO helps your pages answer real questions clearly. The setup may include service pages, page titles, descriptions, schema, FAQ content, sitemap, robots.txt, Search Console, GA4, conversion tracking and landing pages.\n\n3. What you can check first\nSearch your business name, main service and location. Check if the right page appears, whether your title makes sense, and whether your contact button is easy to find. Also confirm Search Console and GA4 are installed correctly.\n\n4. DIY or Axon help\nDIY is okay for updating simple content. Ask Axon to assist if you need a proper audit, service-page strategy, Google tracking, AI-ready content or landing pages for ads.\n\n5. Best next step\nSend Axon the website URL and the search terms you want to target.`;
+    }
+
+    if (includesAny(text, ['form not working', 'form', 'email not sending', 'mail not sending', 'smtp', 'contact form', 'enquiry not received', 'not receiving email'])) {
+      prefillForm(question, 'website form or email delivery issue');
+      return `1. What this likely means\nYour website form may be working on the page, but the message may not be reaching your inbox. Sometimes the form submits successfully but email is blocked, sent to spam, or sent from an address your mail provider does not trust.\n\n2. What could be involved\nCommon causes include SMTP not configured, wrong recipient address, plugin settings, Wix or WordPress form notification settings, Google Workspace or Microsoft 365 spam filtering, SPF/DKIM/DMARC issues, or the website host blocking mail.\n\n3. What you can check first\nTest the form once and note the exact time. Check spam/junk. Try a different email address. Note the page URL and whether the form shows a success message. Do not change DNS records unless you are sure.\n\n4. DIY or Axon help\nDIY is okay for checking spam and form recipient settings. Ask Axon to assist if this affects enquiries, because email delivery may need SMTP and DNS checks.\n\n5. Best next step\nSend Axon your website URL, the form page and the email address that should receive enquiries.`;
+    }
+
+    if (includesAny(text, ['slow', 'speed', 'loading', 'mobile slow', 'page speed', 'core web vitals'])) {
+      prefillForm(question, 'website speed and performance issue');
+      return `1. What this likely means\nYour website may be slow for visitors, especially on mobile. This can reduce enquiries and affect Google visibility.\n\n2. What could be involved\nCommon causes include large images, heavy scripts, too many plugins, weak hosting, no caching, slow third-party tools, video loading, unoptimized fonts or old code.\n\n3. What you can check first\nOpen the site on mobile data, not only office Wi-Fi. Check which page is slow, whether images appear late, and whether the issue happens on phone, laptop or both.\n\n4. DIY or Axon help\nDIY is okay for reducing very large images. Ask Axon to assist if the issue may involve hosting, code, plugins, cache, Core Web Vitals or business-critical pages.\n\n5. Best next step\nSend Axon the slow page URL and what device you tested on.`;
+    }
+
+    if (includesAny(text, ['hacked', 'malware', 'virus', 'blacklist', 'redirect', 'warning', 'suspicious'])) {
+      prefillForm(question, 'website security or malware issue');
+      return `1. What this likely means\nYour website may have a security issue, malware infection, suspicious redirect, browser warning or blacklist problem. This should be treated carefully because it can affect visitors, search visibility and email trust.\n\n2. What could be involved\nThe issue may come from outdated WordPress plugins, weak passwords, infected files, hidden admin users, unsafe themes, bad redirects, compromised hosting or missing security updates.\n\n3. What you can check first\nTake screenshots of the warning and note the affected URL. Avoid deleting random files unless there is a backup. If the site is actively redirecting visitors, treat it as urgent.\n\n4. DIY or Axon help\nThis is usually not a DIY task. Axon should review the site, clean infected files, check backups, update software and harden the site after recovery.\n\n5. Best next step\nUse WhatsApp for urgent help and send the website URL plus screenshots.`;
+    }
+
+    if (includesAny(text, ['app', 'application', 'lovable', 'bolt', 'replit', 'portal', 'dashboard', 'saas', 'ai builder'])) {
+      prefillForm(question, 'AI app or business application planning');
+      return `1. What this likely means\nYou want to build an app, portal, dashboard or system, possibly using AI tools. AI can create a prototype quickly, but a proper business app still needs planning and safe deployment.\n\n2. What could be involved\nA real app may need login, database, forms, file upload, admin panel, payment gateway, email notifications, user permissions, hosting, domain, SSL, backups, privacy rules, testing and support.\n\n3. What you can check first\nWrite down who will use the app, what data it stores, what screens are needed and what action happens after submission. Keep the first version small.\n\n4. DIY or Axon help\nDIY is okay for testing an idea. Ask Axon to help if you need to publish it properly, connect payment/email, protect data, or turn it into a stable business tool.\n\n5. Best next step\nSend Axon the app idea and the top three features you need first.`;
+    }
+
+    if (includesAny(text, ['domain', 'dns', 'ssl', 'hosting', 'cpanel', 'server', 'website down', 'not loading', 'renewal'])) {
+      prefillForm(question, 'domain, hosting or website availability issue');
+      return `1. What this likely means\nThis may be related to your domain, hosting, SSL certificate, DNS, server, renewal or website availability. These areas are connected, so one wrong setting can affect the website or email.\n\n2. What could be involved\nPossible causes include expired domain, hosting suspension, DNS change, SSL issue, server error, wrong nameservers, cache, website files, database error or renewal problem.\n\n3. What you can check first\nCheck whether the domain is expired, whether only your office cannot access it, and whether email is also affected. Prepare any error screenshot.\n\n4. DIY or Axon help\nAvoid changing DNS or server settings if business email is active. Ask Axon to check the safest path.\n\n5. Best next step\nSend Axon the domain name, screenshot and whether email is also affected.`;
+    }
+
+    return `1. What this likely means\nThis sounds like a website, email, hosting, AI, automation or business technology matter that needs a clearer look before choosing the right solution.\n\n2. What could be involved\nIt may involve your website platform, hosting, domain, email, forms, payment, SEO, analytics, AI chatbot, automation, security or business workflow.\n\n3. What you can check first\nPrepare the website URL, what you expected to happen, what actually happened, screenshots and whether the issue affects customers, staff or only you.\n\n4. DIY or Axon help\nSimple content changes may be DIY. Ask Axon to assist if the issue affects enquiries, payment, email, security, Google visibility, AI readiness or business operations.\n\n5. Best next step\nSubmit the form on this page or use WhatsApp for faster support. Axon can review and recommend the practical next step in plain English.`;
+  }
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    const question = input.value.trim();
+    if (!question) return;
+
+    addMessage('user', question);
+    addMessage('agent', buildAnswer(question), [
+      { label: 'WhatsApp Axon', href: whatsappUrl, external: true },
+      { label: 'Submit Contact Form', href: contactUrl, external: false }
+    ]);
+
+    input.value = '';
+  }, true);
+});
