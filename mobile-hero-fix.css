@@ -1,0 +1,130 @@
+/* ==========================================================
+   AXON FINAL MOBILE HERO FIX
+   Mobile only. Desktop is untouched.
+   Clean mobile hero + rotating headline.
+   This mirrors the live SSH mobile homepage fix.
+   ========================================================== */
+@media only screen and (max-width: 768px) {
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  .hero-section {
+    min-height: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    background: #f7f9fc !important;
+  }
+
+  #particleCanvas {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+  }
+
+  .hero-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 12px 0 0 !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    overflow: hidden !important;
+  }
+
+  .hero-motto-badge {
+    width: calc(100% - 28px) !important;
+    max-width: 420px !important;
+    margin: 8px auto 16px !important;
+    padding: 10px 12px !important;
+    font-size: 9px !important;
+    line-height: 1.45 !important;
+    letter-spacing: 0.12em !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+
+  .hero-title-slider-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 20px 22px !important;
+    margin: 0 auto !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  .slider-arrow,
+  #prevTitle,
+  #nextTitle {
+    display: none !important;
+  }
+
+  .hero-title-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  .hero-title .title-line,
+  .hero-title .title-line-inner {
+    display: none !important;
+  }
+
+  .hero-title {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    text-align: center !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  .hero-title::after {
+    content: attr(data-mobile-title);
+    display: block !important;
+    width: 100% !important;
+    max-width: 360px !important;
+    min-height: 115px !important;
+    margin: 0 auto !important;
+    font-size: clamp(30px, 8.6vw, 38px) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.045em !important;
+    font-weight: 800 !important;
+    color: #0b0f19 !important;
+    text-align: center !important;
+    white-space: normal !important;
+    opacity: 1;
+    transition: opacity 0.35s ease;
+  }
+
+  .hero-title.axon-mobile-title-changing::after {
+    opacity: 0;
+  }
+
+  .hero-ctas {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .hero-ctas .btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+}
