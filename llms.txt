@@ -29,6 +29,23 @@ Ask Axon is a plain-English technology and AI advisory page for business owners.
 - Corporate Websites: https://philippines.axon.com.sg/corporate-websites.html
 - Website Optimization Audit: https://philippines.axon.com.sg/website-optimization-audit.html
 
+## Philippines localized help pages
+- Business Technology Help Philippines: https://philippines.axon.com.sg/business-technology-help-philippines.html
+- Business Email Migration Philippines: https://philippines.axon.com.sg/business-email-migration-philippines.html
+- Payment Gateway Help Philippines: https://philippines.axon.com.sg/payment-gateway-help-philippines.html
+- AI Advisory Philippines: https://philippines.axon.com.sg/ai-advisory-philippines.html
+- IT Support Clark Pampanga: https://philippines.axon.com.sg/it-support-clark-pampanga.html
+- Website Support Clark Pampanga: https://philippines.axon.com.sg/website-support-clark-pampanga.html
+- Website Not Showing on Google Philippines: https://philippines.axon.com.sg/website-not-showing-on-google-philippines.html
+- Website Form Not Sending Email Philippines: https://philippines.axon.com.sg/website-form-not-sending-email-philippines.html
+- Website Hacked Help Philippines: https://philippines.axon.com.sg/website-hacked-help-philippines.html
+- Google Workspace Consultant Philippines: https://philippines.axon.com.sg/google-workspace-consultant-philippines.html
+- Microsoft 365 Consultant Philippines: https://philippines.axon.com.sg/microsoft-365-consultant-philippines.html
+- Remote IT Support Philippines: https://philippines.axon.com.sg/remote-it-support-philippines.html
+
+## Philippines local search focus
+Axon Philippines pages are written for Clark, Pampanga, Angeles City, Baguio, Philippines SMEs and remote clients worldwide. The wording is intentionally plain-English and problem-focused because non-IT business owners search by problem, not by technical category.
+
 ## Service categories
 - Technology and AI Advisory
 - Websites and Digital Presence
