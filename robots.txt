@@ -3,3 +3,4 @@ Allow: /
 
 Sitemap: https://philippines.axon.com.sg/sitemap.xml
 Sitemap: https://philippines.axon.com.sg/sitemap-migrations.xml
+Sitemap: https://philippines.axon.com.sg/sitemap-help.xml
