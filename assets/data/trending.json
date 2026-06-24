@@ -1,138 +1,142 @@
 {
-  "updatedDate": "2026-06-23",
-  "positioningStatement": "Latest technology, AI and business insights curated for business owners and decision makers.",
+  "updatedDate": "2026-06-25",
+  "positioningStatement": "Philippines technology, AI and business insights curated for SME owners, founders and decision makers.",
   "articles": [
     {
-      "id": "ai-assistants-business-workflows",
-      "title": "AI assistants are moving into everyday business workflows",
+      "id": "ph-ai-adoption-business-workflows",
+      "title": "AI adoption is becoming practical for Philippine SMEs",
       "category": "AI",
       "categoryKey": "ai",
       "tags": [
         "AI",
-        "Automation",
+        "Philippines",
         "Productivity"
       ],
       "readingTime": "1 Minute Read",
-      "sourceName": "OpenAI News",
-      "sourceUrl": "https://openai.com/news/",
+      "sourceName": "Philippines AI & business technology watch",
+      "sourceUrl": "https://dict.gov.ph/",
       "publishedDate": "Daily Curated Brief",
-      "whatHappened": "AI providers continue to release assistant and agent features that help with research, drafting, customer replies and internal knowledge lookup.",
-      "whyItMatters": "SMEs can start with focused use cases such as FAQ replies, proposal drafts and staff knowledge search before investing in larger AI automation projects.",
+      "whatHappened": "AI tools are becoming more useful for everyday business work such as writing, customer replies, research, reports, staff training and internal knowledge search.",
+      "whyItMatters": "Philippine SMEs do not need to start with complex AI projects. A practical first step is to identify repeated tasks, customer questions, proposal drafts and follow-up work that AI can assist safely.",
       "industries": [
-        "SME Owners",
+        "Philippines SME Owners",
         "Professional Services",
+        "Retail",
         "Education"
       ]
     },
     {
-      "id": "google-workspace-productivity-updates",
-      "title": "Google Workspace updates keep adding productivity and AI features",
-      "category": "Google Workspace",
-      "categoryKey": "googleworkspace",
+      "id": "ph-digital-transformation-dict-sme",
+      "title": "Digital transformation remains a priority for Philippine businesses",
+      "category": "Business",
+      "categoryKey": "business",
       "tags": [
-        "GoogleWorkspace",
-        "Productivity",
-        "AI"
+        "DICT",
+        "SME",
+        "Digital Transformation"
       ],
       "readingTime": "1 Minute Read",
-      "sourceName": "Google Workspace Updates",
-      "sourceUrl": "https://workspaceupdates.googleblog.com/",
+      "sourceName": "DICT Philippines",
+      "sourceUrl": "https://dict.gov.ph/",
       "publishedDate": "Daily Curated Brief",
-      "whatHappened": "Google Workspace continues to publish updates across Gmail, Drive, Docs, Calendar, Meet and admin controls.",
-      "whyItMatters": "Business owners using Gmail and Google Drive should review new features because they may reduce manual follow-up, improve approvals and strengthen account administration.",
+      "whatHappened": "Government and industry conversations in the Philippines continue to highlight digital services, connectivity, cybersecurity awareness and technology adoption.",
+      "whyItMatters": "Business owners should use this direction to review the basics: secure email, reliable hosting, updated websites, enquiry tracking, backups, cloud files and simple automation.",
+      "industries": [
+        "Philippines SME Owners",
+        "Clark Pampanga Businesses",
+        "Baguio Businesses",
+        "Retail",
+        "Hospitality"
+      ]
+    },
+    {
+      "id": "ph-cybersecurity-scam-business-protection",
+      "title": "Cybersecurity and scam awareness are now daily business concerns",
+      "category": "Cybersecurity",
+      "categoryKey": "security",
+      "tags": [
+        "Cybersecurity",
+        "Scams",
+        "Business Protection"
+      ],
+      "readingTime": "1 Minute Read",
+      "sourceName": "Philippines cybersecurity watch",
+      "sourceUrl": "https://dict.gov.ph/",
+      "publishedDate": "Daily Curated Brief",
+      "whatHappened": "Businesses continue to face risks from phishing, fake emails, hacked websites, weak passwords, compromised accounts and suspicious online enquiries.",
+      "whyItMatters": "SMEs should treat cybersecurity as normal operations. Start with MFA, strong email security, clean DNS records, website backups, malware monitoring and staff awareness.",
       "industries": [
         "SME Owners",
+        "Professional Services",
+        "Healthcare",
+        "Education",
+        "Retail"
+      ]
+    },
+    {
+      "id": "ph-google-workspace-m365-email-security",
+      "title": "Business email security matters as Philippine companies move to cloud tools",
+      "category": "Cloud & Email",
+      "categoryKey": "cloudemail",
+      "tags": [
+        "Google Workspace",
+        "Microsoft 365",
+        "Business Email"
+      ],
+      "readingTime": "1 Minute Read",
+      "sourceName": "Google Workspace and Microsoft 365 updates",
+      "sourceUrl": "https://workspaceupdates.googleblog.com/",
+      "publishedDate": "Daily Curated Brief",
+      "whatHappened": "Cloud productivity platforms keep adding new email, file sharing, meeting, admin and AI-assisted features.",
+      "whyItMatters": "Philippine businesses using Gmail, Outlook, Google Drive, OneDrive or Teams should review account security, staff access, SPF, DKIM, DMARC, storage and offboarding processes.",
+      "industries": [
+        "SME Owners",
+        "Professional Services",
+        "Schools",
+        "Clinics",
+        "Manufacturing"
+      ]
+    },
+    {
+      "id": "ph-ecommerce-digital-payments-automation",
+      "title": "Digital payments and e-commerce are pushing businesses to improve workflows",
+      "category": "Payments",
+      "categoryKey": "payments",
+      "tags": [
+        "Payments",
+        "E-Commerce",
+        "Automation"
+      ],
+      "readingTime": "1 Minute Read",
+      "sourceName": "Philippines digital payments watch",
+      "sourceUrl": "https://www.bsp.gov.ph/",
+      "publishedDate": "Daily Curated Brief",
+      "whatHappened": "Customers increasingly expect convenient online payment, clear invoices, confirmation messages and faster follow-up.",
+      "whyItMatters": "Businesses should connect website enquiries, payment links, invoices, reminders and CRM follow-up so fewer leads and payments are missed.",
+      "industries": [
+        "Retail",
+        "E-Commerce",
         "Professional Services",
         "Education",
         "Healthcare"
       ]
     },
     {
-      "id": "microsoft-365-copilot-workplace",
-      "title": "Microsoft 365 continues to expand Copilot and workplace automation",
-      "category": "Microsoft 365",
-      "categoryKey": "microsoft365",
-      "tags": [
-        "Microsoft365",
-        "AI",
-        "Productivity"
-      ],
-      "readingTime": "1 Minute Read",
-      "sourceName": "Microsoft 365 Blog",
-      "sourceUrl": "https://www.microsoft.com/en-us/microsoft-365/blog/",
-      "publishedDate": "Daily Curated Brief",
-      "whatHappened": "Microsoft keeps adding AI-assisted features across Teams, Outlook, Word, Excel, SharePoint and security administration.",
-      "whyItMatters": "Companies already on Microsoft 365 may gain faster meeting notes, document drafting and knowledge discovery, but they still need proper permissions and adoption planning.",
-      "industries": [
-        "SME Owners",
-        "Professional Services",
-        "Manufacturing",
-        "Healthcare"
-      ]
-    },
-    {
-      "id": "cybersecurity-advisories-business-patching",
-      "title": "Cybersecurity advisories show why patching and backups remain essential",
-      "category": "Cybersecurity",
-      "categoryKey": "security",
-      "tags": [
-        "Cybersecurity",
-        "Business",
-        "Cloud"
-      ],
-      "readingTime": "1 Minute Read",
-      "sourceName": "CISA Cybersecurity Advisories",
-      "sourceUrl": "https://www.cisa.gov/news-events/cybersecurity-advisories",
-      "publishedDate": "Daily Curated Brief",
-      "whatHappened": "Security agencies regularly publish vulnerability and threat advisories affecting websites, servers, email systems, routers and business software.",
-      "whyItMatters": "SMEs should treat patching, secure backups, MFA and recovery planning as normal operations, not emergency work after an incident.",
-      "industries": [
-        "SME Owners",
-        "Retail",
-        "Manufacturing",
-        "Healthcare",
-        "Hospitality"
-      ]
-    },
-    {
-      "id": "cloud-security-performance-websites",
-      "title": "Cloud platforms are simplifying website security and performance controls",
-      "category": "Cloud",
-      "categoryKey": "cloud",
-      "tags": [
-        "Cloud",
-        "Cybersecurity",
-        "Websites"
-      ],
-      "readingTime": "1 Minute Read",
-      "sourceName": "Cloudflare Blog",
-      "sourceUrl": "https://blog.cloudflare.com/",
-      "publishedDate": "Daily Curated Brief",
-      "whatHappened": "Cloud providers continue to improve tools for DNS, CDN, bot protection, zero trust access, web application firewalls and performance monitoring.",
-      "whyItMatters": "A small business website can become faster and safer when hosting, DNS, SSL, backups and monitoring are managed as one operational setup.",
-      "industries": [
-        "SME Owners",
-        "Retail",
-        "Hospitality",
-        "Professional Services"
-      ]
-    },
-    {
-      "id": "websites-search-analytics-readiness",
-      "title": "Website visibility still depends on analytics, Search Console and crawlability",
+      "id": "ph-website-ai-search-visibility",
+      "title": "Philippine business websites need to prepare for AI search visibility",
       "category": "Websites",
       "categoryKey": "websites",
       "tags": [
-        "Business",
-        "Websites",
-        "Productivity"
+        "Website",
+        "SEO",
+        "AI Search"
       ],
       "readingTime": "1 Minute Read",
       "sourceName": "Google Search Central Blog",
       "sourceUrl": "https://developers.google.com/search/blog",
       "publishedDate": "Daily Curated Brief",
-      "whatHappened": "Search guidance continues to emphasize useful content, technical crawlability, structured data, page experience and measurement.",
-      "whyItMatters": "Business owners should make sure GA4, Search Console, sitemap, mobile layout, speed and enquiry tracking are working before spending more on ads.",
+      "whatHappened": "Search visibility now depends on clear content, good structure, mobile layout, crawlability, helpful answers, analytics and trust signals.",
+      "whyItMatters": "Philippine SMEs should make sure their websites clearly explain services, locations, contact options, FAQs, schema, sitemap, robots.txt, llms.txt and enquiry tracking.",
       "industries": [
         "SME Owners",
         "Professional Services",
@@ -142,92 +146,117 @@
       ]
     },
     {
-      "id": "business-automation-lead-followup",
-      "title": "Business automation is moving from back-office tasks into sales follow-up",
+      "id": "ph-business-automation-lead-followup",
+      "title": "Business automation can reduce lost leads from website and WhatsApp enquiries",
       "category": "Automation",
       "categoryKey": "automation",
       "tags": [
         "Automation",
-        "Business",
-        "Productivity"
+        "WhatsApp",
+        "CRM"
       ],
       "readingTime": "1 Minute Read",
-      "sourceName": "n8n Blog",
+      "sourceName": "Business automation watch",
       "sourceUrl": "https://blog.n8n.io/",
       "publishedDate": "Daily Curated Brief",
-      "whatHappened": "Automation tools are increasingly used to connect forms, CRM records, email, WhatsApp notifications, spreadsheets and approval workflows.",
-      "whyItMatters": "SMEs can reduce lost leads by routing enquiries, reminders and quotations automatically while keeping staff in control of final decisions.",
+      "whatHappened": "Automation tools are being used to connect contact forms, CRM records, spreadsheets, email alerts, WhatsApp notifications and follow-up reminders.",
+      "whyItMatters": "Many SMEs lose enquiries because follow-up is manual. A simple workflow can route leads, assign responsibility, remind staff and keep records searchable.",
       "industries": [
-        "SME Owners",
-        "Professional Services",
+        "Philippines SME Owners",
+        "Real Estate",
+        "Clinics",
         "Retail",
-        "Manufacturing",
-        "Hospitality"
+        "Restaurants"
       ]
     },
     {
-      "id": "sme-digital-readiness-singapore",
-      "title": "Singapore digital readiness programs keep technology adoption on the business agenda",
-      "category": "Business",
-      "categoryKey": "business",
+      "id": "ph-data-privacy-ai-staff-policy",
+      "title": "AI use makes staff policy and data privacy more important",
+      "category": "Privacy",
+      "categoryKey": "privacy",
       "tags": [
-        "Business",
-        "Cloud",
-        "Automation"
+        "Privacy",
+        "AI Policy",
+        "Staff Training"
       ],
       "readingTime": "1 Minute Read",
-      "sourceName": "IMDA Singapore",
-      "sourceUrl": "https://www.imda.gov.sg/",
+      "sourceName": "National Privacy Commission Philippines",
+      "sourceUrl": "https://privacy.gov.ph/",
       "publishedDate": "Daily Curated Brief",
-      "whatHappened": "Singapore agencies and industry groups continue to promote digital readiness, cybersecurity awareness and AI adoption for SMEs.",
-      "whyItMatters": "Business owners can use these signals to prioritize practical upgrades: secure email, better websites, lead tracking, analytics, automation and staff training.",
-      "industries": [
-        "SME Owners",
-        "Professional Services",
-        "Retail",
-        "Manufacturing",
-        "Education"
-      ]
-    },
-    {
-      "id": "privacy-ai-policy-staff-training",
-      "title": "AI usage policies and staff training are becoming part of normal IT governance",
-      "category": "Business",
-      "categoryKey": "business",
-      "tags": [
-        "AI",
-        "Business",
-        "Productivity"
-      ],
-      "readingTime": "1 Minute Read",
-      "sourceName": "Singapore PDPC",
-      "sourceUrl": "https://www.pdpc.gov.sg/",
-      "publishedDate": "Daily Curated Brief",
-      "whatHappened": "Data protection guidance and AI governance discussions continue to shape how businesses use customer data, staff tools and AI assistants.",
-      "whyItMatters": "SMEs should explain what staff can enter into AI tools, how customer data is protected and when human review is required.",
+      "whatHappened": "As staff use AI tools, businesses need clearer rules on customer data, confidential information, document sharing and human review.",
+      "whyItMatters": "A simple AI and privacy policy helps employees understand what they can enter into AI tools, what must stay private and when management approval is needed.",
       "industries": [
         "SME Owners",
         "Professional Services",
         "Healthcare",
-        "Education"
+        "Education",
+        "Finance"
       ]
     },
     {
-      "id": "productivity-tools-collaboration",
-      "title": "Productivity tools are consolidating tasks, documents and customer context",
+      "id": "ph-local-business-digital-presence",
+      "title": "Local businesses in Clark, Pampanga, Baguio and Metro Manila need stronger digital presence",
+      "category": "Local Business",
+      "categoryKey": "localbusiness",
+      "tags": [
+        "Local SEO",
+        "Google Business Profile",
+        "Philippines"
+      ],
+      "readingTime": "1 Minute Read",
+      "sourceName": "Philippines local business digital presence watch",
+      "sourceUrl": "https://www.google.com/business/",
+      "publishedDate": "Daily Curated Brief",
+      "whatHappened": "Customers often check websites, Google Business Profiles, reviews, maps, WhatsApp links and social proof before contacting a local business.",
+      "whyItMatters": "A local business should keep its website, Google profile, contact forms, WhatsApp link, service pages and review signals accurate and easy to use.",
+      "industries": [
+        "Restaurants",
+        "Clinics",
+        "Retail",
+        "Hotels",
+        "Local Services"
+      ]
+    },
+    {
+      "id": "ph-cloud-hosting-website-reliability",
+      "title": "Website hosting reliability affects trust, enquiries and business continuity",
+      "category": "Hosting",
+      "categoryKey": "hosting",
+      "tags": [
+        "Hosting",
+        "Cloud",
+        "Website Reliability"
+      ],
+      "readingTime": "1 Minute Read",
+      "sourceName": "Cloud and hosting operations watch",
+      "sourceUrl": "https://blog.cloudflare.com/",
+      "publishedDate": "Daily Curated Brief",
+      "whatHappened": "Website speed, SSL, DNS, backups, uptime and email delivery continue to affect customer trust and business operations.",
+      "whyItMatters": "Philippine SMEs should review hosting, DNS, SSL, backups, PHP versions, email authentication and support response before problems affect enquiries.",
+      "industries": [
+        "SME Owners",
+        "Professional Services",
+        "Retail",
+        "Hospitality",
+        "Schools"
+      ]
+    },
+    {
+      "id": "ph-productivity-tools-teams-documents",
+      "title": "Productivity tools are becoming central to daily Philippine business operations",
       "category": "Productivity",
       "categoryKey": "productivity",
       "tags": [
         "Productivity",
-        "Automation",
-        "Business"
+        "Collaboration",
+        "Cloud Files"
       ],
       "readingTime": "1 Minute Read",
-      "sourceName": "Atlassian Work Life",
+      "sourceName": "Productivity and collaboration watch",
       "sourceUrl": "https://www.atlassian.com/blog",
       "publishedDate": "Daily Curated Brief",
-      "whatHappened": "Modern productivity platforms increasingly combine project tracking, documentation, knowledge search and automation into fewer daily workspaces.",
-      "whyItMatters": "Teams can reduce scattered work when tasks, approvals, meeting notes and customer follow-up are organized around a clear operating process.",
+      "whatHappened": "Teams are moving tasks, files, notes, approvals and customer context into fewer shared digital workspaces.",
+      "whyItMatters": "A business can reduce confusion when files, permissions, tasks, meeting notes and customer follow-ups are organised around a clear workflow.",
       "industries": [
         "SME Owners",
         "Professional Services",
@@ -236,50 +265,26 @@
       ]
     },
     {
-      "id": "website-ai-chatbots-lead-guidance",
-      "title": "Website AI chatbots are becoming first-line enquiry assistants",
+      "id": "ph-website-ai-chatbot-lead-guidance",
+      "title": "Website AI chatbots can help Philippine SMEs guide enquiries before a human reply",
       "category": "AI",
       "categoryKey": "ai",
       "tags": [
-        "AI",
-        "Websites",
-        "Automation"
+        "AI Chatbot",
+        "Website",
+        "Lead Capture"
       ],
       "readingTime": "1 Minute Read",
-      "sourceName": "OpenAI News",
+      "sourceName": "AI assistant business watch",
       "sourceUrl": "https://openai.com/news/",
       "publishedDate": "Daily Curated Brief",
-      "whatHappened": "AI assistants are increasingly used to guide website visitors, answer common questions and collect useful enquiry details before a human reply is needed.",
-      "whyItMatters": "Business websites should not only look good. They should help visitors understand services, ask the right questions and contact the company easily.",
+      "whatHappened": "AI assistants can help website visitors understand services, ask better questions and submit more useful enquiry details.",
+      "whyItMatters": "A business website should not only display information. It should help visitors choose the right service, explain concerns and contact the company easily.",
       "industries": [
         "SME Owners",
         "Professional Services",
         "Retail",
         "Hospitality"
-      ]
-    },
-    {
-      "id": "business-payments-invoices-followup-automation",
-      "title": "Payment, invoice and follow-up workflows are moving into automation",
-      "category": "Automation",
-      "categoryKey": "automation",
-      "tags": [
-        "Automation",
-        "Payments",
-        "Business"
-      ],
-      "readingTime": "1 Minute Read",
-      "sourceName": "Stripe Blog",
-      "sourceUrl": "https://stripe.com/blog",
-      "publishedDate": "Daily Curated Brief",
-      "whatHappened": "Businesses are connecting payment links, invoices, reminders, forms and CRM follow-up so fewer manual steps are needed after a customer enquiry.",
-      "whyItMatters": "SMEs can reduce missed payments and lost leads by automating simple follow-up while keeping staff in control of approvals and customer communication.",
-      "industries": [
-        "SME Owners",
-        "Retail",
-        "Professional Services",
-        "Education",
-        "Healthcare"
       ]
     }
   ]
