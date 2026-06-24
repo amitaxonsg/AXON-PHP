@@ -154,8 +154,23 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/'/g, '&#039;');
   }
 
+  function replyAlreadyHasReferences(value) {
+    return /Recommended Axon pages to read:?|\[Read:|\[WhatsApp Axon\]|\[Submit Contact Form\]/i.test(String(value || ''));
+  }
+
   function formatText(value) {
-    return escapeHtml(value).replace(/\n/g, '<br>');
+    let html = escapeHtml(value);
+    html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+|mailto:[^\s)]+|[^\s)]+\.html)\)/g, (_match, label, href) => {
+      const safeLabel = escapeHtml(label);
+      const safeHref = escapeHtml(href);
+      const isRead = /^Read:/i.test(label);
+      const target = /^https?:\/\//i.test(href) || /^mailto:/i.test(href) ? '_blank' : '_self';
+      const style = isRead
+        ? 'display:block;font-weight:700;text-decoration:underline;margin:6px 0;'
+        : 'display:inline-block;margin-top:8px;margin-right:14px;font-weight:600;text-decoration:underline;';
+      return `<a href="${safeHref}" target="${target}" rel="noopener" style="${style}">${safeLabel}</a>`;
+    });
+    return html.replace(/\n/g, '<br>');
   }
 
   function addMessage(role, text, actions = []) {
@@ -169,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
     body.innerHTML = formatText(text);
     message.append(speaker, body);
 
-    if (actions.length && role === 'agent') {
+    if (actions.length && role === 'agent' && !replyAlreadyHasReferences(text)) {
       const referenceActions = actions.filter((action) => action.label.toLowerCase().startsWith('read'));
       const contactActions = actions.filter((action) => !action.label.toLowerCase().startsWith('read'));
 
@@ -361,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const aiAnswer = await askKimiFallback(question);
       loadingMessage.remove();
       prefillForm(question, 'business technology question');
-      addMessage('agent', aiAnswer, actions);
+      addMessage('agent', aiAnswer, replyAlreadyHasReferences(aiAnswer) ? [] : actions);
     } catch (error) {
       loadingMessage.remove();
       addMessage('agent', genericFallbackAnswer(question), actions);
