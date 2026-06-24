@@ -35,6 +35,112 @@ function normalize_query($value) {
     return trim($value);
 }
 
+function unique_values($items, $limit = 8) {
+    $out = [];
+    foreach ($items as $item) {
+        $item = trim((string)$item);
+        if ($item === '') continue;
+        if (!in_array($item, $out, true)) $out[] = $item;
+        if (count($out) >= $limit) break;
+    }
+    return $out;
+}
+
+function public_fetch($url) {
+    if (!preg_match('/^https:\/\/(www\.)?(axon\.com\.sg|philippines\.axon\.com\.sg)\//i', $url)) return '';
+    if (function_exists('curl_init')) {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 8);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'AxonAIContactCheck/1.0');
+        $html = curl_exec($ch);
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        if ($html !== false && $code >= 200 && $code < 400) return (string)$html;
+        return '';
+    }
+    $ctx = stream_context_create(['http' => ['timeout' => 8, 'user_agent' => 'AxonAIContactCheck/1.0']]);
+    $html = @file_get_contents($url, false, $ctx);
+    return $html === false ? '' : (string)$html;
+}
+
+function is_axon_contact_query($question) {
+    $q = normalize_query($question);
+    if ($q === '') return false;
+    $needles = [
+        'axon address', 'contact axon', 'axon contact', 'where is axon', 'axon office',
+        'axon location', 'axon phone', 'axon whatsapp', 'email axon', 'how to contact',
+        'contact information', 'contact info', 'office address', 'your address',
+        'your office', 'your contact', 'company address', 'company phone'
+    ];
+    foreach ($needles as $needle) {
+        if (strpos($q, $needle) !== false) return true;
+    }
+    return (strpos($q, 'address') !== false && strpos($q, 'axon') !== false);
+}
+
+function axon_contact_reply_from_site() {
+    $urls = [
+        'https://axon.com.sg/contact.html',
+        'https://axon.com.sg/',
+        'https://philippines.axon.com.sg/contact.html',
+        'https://philippines.axon.com.sg/'
+    ];
+
+    $emails = [];
+    $whatsapp = [];
+    $phones = [];
+    $foundPages = [];
+
+    foreach ($urls as $url) {
+        $html = public_fetch($url);
+        if ($html === '') continue;
+        $foundPages[] = $url;
+
+        if (preg_match_all('/[A-Z0-9._%+\-]+@[A-Z0-9.\-]+\.[A-Z]{2,}/i', $html, $m)) {
+            $emails = array_merge($emails, $m[0]);
+        }
+        if (preg_match_all('/https?:\/\/(?:wa\.me|api\.whatsapp\.com|chat\.whatsapp\.com)[^"\'>\s]+/i', $html, $m)) {
+            $whatsapp = array_merge($whatsapp, $m[0]);
+        }
+        if (preg_match_all('/(?:\+65|\+63|65\s|63\s)[0-9][0-9\s().\-]{6,18}/', $html, $m)) {
+            $phones = array_merge($phones, $m[0]);
+        }
+    }
+
+    $emails = unique_values($emails, 6);
+    $whatsapp = unique_values($whatsapp, 4);
+    $phones = unique_values($phones, 6);
+
+    $reply = "1. Axon contact information\n";
+    if ($foundPages) {
+        $reply .= "I checked Axon's public website pages for contact clues before answering.\n";
+    } else {
+        $reply .= "I could not complete a live public-page check from the server right now, so I am using the known Axon contact flow.\n";
+    }
+
+    $reply .= "\n2. What I can confirm safely\n";
+    $reply .= "Axon supports business clients in Singapore, the Philippines/Clark and remotely. The safest contact method is WhatsApp or the Contact page so the issue, website URL and urgency can be captured properly.\n";
+    if ($emails) $reply .= "Email found on public pages: " . implode(', ', $emails) . ".\n";
+    if ($phones) $reply .= "Phone/WhatsApp-style numbers found on public pages: " . implode(', ', $phones) . ".\n";
+    if ($whatsapp) $reply .= "WhatsApp links found on public pages: " . implode(', ', $whatsapp) . ".\n";
+
+    $reply .= "\n3. About office address / walk-in visit\n";
+    $reply .= "Do not assume a walk-in office visit unless Axon confirms an appointment. If you need a meeting, share your company name, website, issue and preferred time first.\n\n";
+
+    $reply .= "4. Best next step\n";
+    $reply .= "Use WhatsApp for urgent support, or submit the Contact form with your website URL, email domain, screenshots and what result you want.\n\n";
+
+    $reply .= "Recommended Axon pages to read:\n";
+    $reply .= "[Read: Contact Axon](contact.html)\n";
+    $reply .= "[Read: Business Technology Help](" . business_help_page() . ")\n\n";
+    $reply .= "[WhatsApp Axon](https://wa.me/639614044560)   [Submit Contact Form](contact.html)";
+
+    return $reply;
+}
+
 function load_question_bank() {
     $file = __DIR__ . '/non-it-executive-questions.json';
     if (!is_readable($file)) return [];
@@ -118,6 +224,7 @@ function question_bank_reply($entry) {
     $reply .= "Recommended Axon pages to read:\n";
     $reply .= "[Read: " . $service . "](" . $page . ")\n";
     $reply .= "[Read: Business Technology Help](" . business_help_page() . ")\n\n";
+
     $reply .= "[WhatsApp Axon](https://wa.me/639614044560)   [Submit Contact Form](contact.html)";
     return $reply;
 }
@@ -130,6 +237,22 @@ $systemPrompt = clean_text($input['systemPrompt'] ?? '', 10000);
 $mode = clean_text($input['mode'] ?? 'ask_axon', 80);
 
 if ($question === '') respond_json(422, ['success' => false, 'message' => 'Please enter your question.']);
+
+/*
+ * Axon contact/address questions: check public Axon pages first.
+ * This avoids inventing address details and gives a safe contact flow.
+ */
+if ($mode !== 'website_audit' && is_axon_contact_query($question)) {
+    $contactReply = axon_contact_reply_from_site();
+    respond_json(200, [
+        'success' => true,
+        'reply' => $contactReply,
+        'answer' => $contactReply,
+        'mode' => $mode,
+        'source' => 'axon_public_contact_scan',
+        'matched_category' => 'Axon Contact'
+    ]);
+}
 
 /*
  * Local Axon question bank first.
